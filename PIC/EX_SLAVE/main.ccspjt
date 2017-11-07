@@ -1,0 +1,138 @@
+[PROJECT]
+Target=main.hex
+Processor_Text=PIC16F1825
+CCSVerions=5.071
+Compiler=PCM
+CCSVersion=5.071
+[Target Data]
+FileList=main.c
+[Directories]
+Include=
+[I:\work\bluetooth\i2c_test_pic\main]
+Type=4
+[mru-list]
+1=main.c
+[CompilerVersion]
+Fixed=5.071							
+
+[ProjectLog]
+Days=8
+D1=18-05-2017
+D1_L=5
+D1_L1=[61169]Project Opened.
+D1_L2=[62017]Project Closed.
+D1_L3=[62017]Project Opened.
+D1_L4=[62212]Project Closed.
+D1_L5=[62212]Project Opened.
+D2=19-05-2017
+D2_L=1
+D2_L1=[33252]Project Closed.
+D3=22-05-2017
+D3_L=10
+D3_L1=[53496]Project Opened.
+D3_L2=[53757]Project Closed.
+D3_L3=[53758]Project Opened.
+D3_L4=[53837]Project Closed.
+D3_L5=[53837]Project Opened.
+D3_L6=[53879]Started Editing.
+D3_L7=[54550]Stopped Editing.
+TotalEdit=36
+TotalDebug=0
+D3_E=7
+D3_D=0
+D3_L8=[58015]Project Closed.
+D3_L9=[60450]Project Opened.
+D3_L10=[62666]Project Closed.
+D4=08-06-2017
+D4_L=10
+D4_L1=[47788]Project Opened.
+D4_L2=[47828]Project Closed.
+D4_L3=[47853]Project Opened.
+D4_L4=[47879]Started Editing.
+D4_L5=[48131]Stopped Editing.
+D4_E=5
+D4_D=0
+D4_L6=[48131]Project Closed.
+D4_L7=[48148]Project Opened.
+D4_L8=[48755]Project Closed.
+D4_L9=[49571]Project Opened.
+D4_L10=[49881]Project Closed.
+D5=09-06-2017
+D5_L=3
+D5_L1=[48641]Project Opened.
+D5_L2=[62784]Project Closed.
+D5_L3=[63060]Project Opened.
+D6=10-06-2017
+D6_L=17
+D6_L1=[40891]Started Editing.
+D6_L2=[41218]Stopped Editing.
+D6_L3=[41289]Started Editing.
+D6_L4=[41808]Stopped Editing.
+D6_E=16
+D6_D=0
+D6_L5=[48572]Project Closed.
+D6_L6=[48599]Project Opened.
+D6_L7=[50408]Project Closed.
+D6_L8=[51303]Project Opened.
+D6_L9=[51314]Started Editing.
+D6_L10=[51663]Stopped Editing.
+D6_L11=[51663]Project Closed.
+D6_L12=[51663]Project Opened.
+D6_L13=[51841]Project Closed.
+D6_L14=[51841]Project Opened.
+D6_L15=[52117]Started Editing.
+D6_L16=[52684]Stopped Editing.
+D6_L17=[59994]Project Closed.
+D7=12-06-2017
+D7_L=17
+D7_L1=[36270]Project Opened.
+D7_L2=[48336]Project Closed.
+D7_L3=[53179]Project Opened.
+D7_L4=[53197]Started Editing.
+D7_L5=[53381]Stopped Editing.
+D7_E=7
+D7_D=0
+D7_L6=[53381]Project Closed.
+D7_L7=[59086]Project Opened.
+D7_L8=[59160]Started Editing.
+D7_L9=[59460]Stopped Editing.
+D7_L10=[61166]Project Closed.
+D7_L11=[62487]Project Opened.
+D7_L12=[62638]Project Closed.
+D7_L13=[62638]Project Opened.
+D7_L14=[62660]Started Editing.
+D7_L15=[63075]Stopped Editing.
+D7_L16=[63225]Project Closed.
+D7_L17=[66543]Project Opened.
+D8=13-06-2017
+D8_L=5
+D8_L1=[39831]Started Editing.
+D8_L2=[40140]Stopped Editing.
+D8_L3=[40691]Started Editing.
+D8_L4=[41022]Stopped Editing.
+D8_E=1
+D8_D=0
+D8_L5=[42481]Project Closed.
+
+[Opened Files]
+1=main.c
+t1=5
+Count=3
+2=main.h
+t2=1
+3=C:\Program Files\PICC\devices\16F1825.h
+t3=9
+[main.c]
+Type=4
+
+[defines]
+buildcount=23
+[I:\WorkShop\BlueTooth\i2c_test_pic\main]
+Type=4
+[I:\WorkShop\BlueTooth\hardware_i2c_pic\main]
+Type=4
+[I:\WorkShop\BlueTooth\EX_SLAVE\main]
+Type=4
+[Units]
+Count=1
+1=main (main)

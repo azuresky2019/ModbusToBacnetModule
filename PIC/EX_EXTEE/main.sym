@@ -1,0 +1,105 @@
+004-005 @WRITE_PROGRAM_MEMORY8.P1
+004-005 @MEMSET.P2
+004-005 @WRITE_PACKED_MEMORY.P3
+004-005 @READ_PROGRAM_MEMORY8.P4
+004-005 @READ_PACKED_MEMORY.P5
+006-007 @WRITE_PACKED_MEMORY.P1
+006-007 @READ_PACKED_MEMORY.P2
+021     MAIN.value
+022     MAIN.cmd
+023-024 MAIN.address
+025     @PRINTF_X_115200_116_117.P1
+025     @PSTRINGCN7_115200_116_117.P2
+025-026 read_ext_eeprom.address
+025     MAIN.@SCRATCH1
+026     @PRINTF_X_115200_116_117.P1
+026     @delay_ms1.P2
+027     read_ext_eeprom.data
+028.0   ext_eeprom_ready.ack
+028     @I2C_READ_2.P1
+028     read_ext_eeprom.@SCRATCH1
+028     @PSTRINGCN7_115200_116_117.@SCRATCH1
+029     @I2C_WRITE_2.P1
+029     @PSTRINGCN7_115200_116_117.@SCRATCH2
+02A     @I2C_READ_2.@SCRATCH1
+02A     @PSTRINGCN7_115200_116_117.@SCRATCH3
+02B     @I2C_READ_2.@SCRATCH2
+077     @SCRATCH
+077     @MEMSET.P1
+078     @SCRATCH
+078     _RETURN_
+078     @MEMSET.P1
+079     @SCRATCH
+07A     @SCRATCH
+111.6   C1OUT
+113.6   C2OUT
+191-192 @READ_PROGRAM_MEMORY8.P1
+191-192 @WRITE_PROGRAM_MEMORY8.P2
+291     CCP_1_LOW
+291     CCP_1
+292     CCP_1_HIGH
+298     CCP_2_LOW
+298     CCP_2
+299     CCP_2_HIGH
+311     CCP_3_LOW
+311     CCP_3
+312     CCP_3_HIGH
+318     CCP_4_LOW
+318     CCP_4
+319     CCP_4_HIGH
+39C.0   MDBIT
+39C.3   MDOUT
+
+ROM Allocation:
+000003  @const678.call
+00000A  init_ext_eeprom
+000010  @I2C_WRITE_2
+00005A  ext_eeprom_ready
+00005A  read_ext_eeprom
+0000FB  @I2C_READ_2
+000159  @PSTRINGCN7_115200_116_117
+0001B0  @PRINTF_X_115200_116_117
+0001D8  @MEMSET
+0001E1  @delay_ms1
+0001F6  @cinit1
+0001F6  MAIN
+000218  @cinit2
+
+Project Directory:
+    I:\WorkShop\BlueTooth\EX_EXTEE\
+
+Project Files:
+    main.c                                                  [12-六月-17 17:20  CRC=8C7E1ADF]
+    main.h                                                  [12-六月-17 17:03  CRC=D872A938]
+    C:\Program Files\PICC\devices\16F1825.h                 [28-三月-17 14:01  CRC=B9F36BD0]
+    C:\Program Files\PICC\drivers\2404.C                    [01-三月-08 22:59  CRC=B460D10E]
+
+Source signature=87A5D203
+Program memory checksum=0000
+Program memory CRC=0000
+Hex file CRC=E13B
+
+Units:
+    main (main)
+
+Compiler Settings:
+    Processor:      PIC16F1825
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Enhanced 16:    Yes
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   main.xsym
+    Errors:      main.err
+    Ext Symbols: main.esym
+    INHX8:       main.hex
+    Symbols:     main.sym
+    List:        main.lst
+    Debug/COFF:  main.cof
+    Project:     main.ccspjt
+    Call Tree:   main.tre
+    Statistics:  main.STA

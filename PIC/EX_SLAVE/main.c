@@ -1,0 +1,52 @@
+#include <main.h>
+
+#define  LENGTH    256
+
+unsigned int8 address, buffer[LENGTH];
+
+#INT_SSP
+void ssp_interrupt ()
+{
+   unsigned int8 incoming, state;
+
+   state = i2c_isr_state();
+
+   if(state <= 0x80)                      //Master is sending data
+   {
+      if(state == 0x80)
+         incoming = i2c_read(2);          //Passing 2 as parameter, causes the function to read the SSPBUF without releasing the clock
+      else
+         incoming = i2c_read();
+
+      if(state == 1)                      //First received byte is address
+         address = incoming;
+      else if(state >= 2 && state != 0x80)   //Received byte is data
+         buffer[address++] = incoming;
+   }
+
+   if(state >= 0x80)                      //Master is requesting data
+   {
+      i2c_write(buffer[address++]);
+   }
+}
+
+
+void main()
+{
+   
+   enable_interrupts(GLOBAL);
+   enable_interrupts(INT_SSP);
+   
+   while(TRUE)
+   {
+
+      //Example blinking LED program
+      output_low(LED);
+      delay_ms(DELAY);
+      output_high(LED);
+      delay_ms(DELAY);
+
+      //TODO: User Code
+   }
+
+}

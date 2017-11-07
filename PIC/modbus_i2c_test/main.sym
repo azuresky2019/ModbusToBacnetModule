@@ -1,0 +1,219 @@
+004-005 @MEMSET.P1
+004-005 @READ_PACKED_MEMORY.P2
+004-005 @WRITE_PACKED_MEMORY.P3
+004-005 @WRITE_PROGRAM_MEMORY8.P4
+004-005 @READ_PROGRAM_MEMORY8.P5
+006-007 @WRITE_PACKED_MEMORY.P1
+006-007 @READ_PACKED_MEMORY.P2
+020     @INTERRUPT_AREA
+021     @INTERRUPT_AREA
+022     @INTERRUPT_AREA
+023     @INTERRUPT_AREA
+024     @INTERRUPT_AREA
+025.0   modbus_serial_new
+025.1   modbus_timeout_enabled
+026-06F,0A0-0EF,120-16F,1A0-1B3 modbus_rx
+070     UPPER_TICKS_1
+071     rs232_errors
+072     modbus_serial_state
+073     address
+074     @I2C_STATE
+077     @SCRATCH
+077     @MEMSET.P1
+078     @SCRATCH
+078     @MEMSET.P1
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+07F     @INTERRUPT_AREA
+0FF     @INTERRUPT_AREA
+111.6   C1OUT
+113.6   C2OUT
+17F     @INTERRUPT_AREA
+191-192 @WRITE_PROGRAM_MEMORY8.P1
+191-192 @READ_PROGRAM_MEMORY8.P2
+19E     TXSTA
+19E.1   TRMT
+1B4-1B7 modbus_serial_wait
+1B8-1B9 modbus_serial_crc
+1BA-1EF,220-26F,2A0-2EF,320-349 buffer
+1FF     @INTERRUPT_AREA
+27F     @INTERRUPT_AREA
+291     CCP_1
+291     CCP_1_LOW
+292     CCP_1_HIGH
+298     CCP_2
+298     CCP_2_LOW
+299     CCP_2_HIGH
+2FF     @INTERRUPT_AREA
+311     CCP_3_LOW
+311     CCP_3
+312     CCP_3_HIGH
+318     CCP_4
+318     CCP_4_LOW
+319     CCP_4_HIGH
+34A     modbus_read_holding_registers.address
+34A     MAIN.@SCRATCH1
+34B-34C modbus_read_holding_registers.start_address
+34B     @delay_ms1.P1
+34D-34E modbus_read_holding_registers.quantity
+34F     modbus_serial_send_start.to
+34F     modbus_serial_send_stop.crc_low
+34F     modbus_read_holding_registers.@SCRATCH1
+350     modbus_serial_send_start.func
+350     modbus_serial_send_stop.crc_high
+350     modbus_check_timeout.@SCRATCH1
+351     modbus_serial_putc.c
+351     @delay_us1.P1
+351     modbus_check_timeout.@SCRATCH2
+352     @PUTCHAR_BIU_1.P1
+353     @PUTCHAR_BIU_1.@SCRATCH1
+354     ssp_interrupt.incoming
+354     incomming_modbus_serial.c
+355     ssp_interrupt.state
+356     modbus_calc_crc.data
+356     modbus_enable_timeout.enable
+356     @GETCH_BIU_1.@SCRATCH1
+356     incomming_modbus_serial.@SCRATCH1
+356     ssp_interrupt.@SCRATCH1
+357     @I2C_WRITE_1.P1
+357-358 @SET_TICKS_1.P2
+357     modbus_calc_crc.uIndex
+357     @GETCH_BIU_1.@SCRATCH2
+357     incomming_modbus_serial.@SCRATCH2
+357     ssp_interrupt.@SCRATCH2
+37F     @INTERRUPT_AREA
+39C.0   MDBIT
+39C.3   MDOUT
+3FF     @INTERRUPT_AREA
+47F     @INTERRUPT_AREA
+4FF     @INTERRUPT_AREA
+57F     @INTERRUPT_AREA
+5FF     @INTERRUPT_AREA
+67F     @INTERRUPT_AREA
+6FF     @INTERRUPT_AREA
+77F     @INTERRUPT_AREA
+7FF     @INTERRUPT_AREA
+87F     @INTERRUPT_AREA
+8FF     @INTERRUPT_AREA
+97F     @INTERRUPT_AREA
+9FF     @INTERRUPT_AREA
+A7F     @INTERRUPT_AREA
+AFF     @INTERRUPT_AREA
+B7F     @INTERRUPT_AREA
+BFF     @INTERRUPT_AREA
+C7F     @INTERRUPT_AREA
+CFF     @INTERRUPT_AREA
+D7F     @INTERRUPT_AREA
+DFF     @INTERRUPT_AREA
+E7F     @INTERRUPT_AREA
+EFF     @INTERRUPT_AREA
+F7F     @INTERRUPT_AREA
+FFF     @INTERRUPT_AREA
+107F     @INTERRUPT_AREA
+10FF     @INTERRUPT_AREA
+117F     @INTERRUPT_AREA
+11FF     @INTERRUPT_AREA
+127F     @INTERRUPT_AREA
+12FF     @INTERRUPT_AREA
+137F     @INTERRUPT_AREA
+13FF     @INTERRUPT_AREA
+147F     @INTERRUPT_AREA
+14FF     @INTERRUPT_AREA
+157F     @INTERRUPT_AREA
+15FF     @INTERRUPT_AREA
+167F     @INTERRUPT_AREA
+16FF     @INTERRUPT_AREA
+177F     @INTERRUPT_AREA
+17FF     @INTERRUPT_AREA
+187F     @INTERRUPT_AREA
+18FF     @INTERRUPT_AREA
+197F     @INTERRUPT_AREA
+19FF     @INTERRUPT_AREA
+1A7F     @INTERRUPT_AREA
+1AFF     @INTERRUPT_AREA
+1B7F     @INTERRUPT_AREA
+1BFF     @INTERRUPT_AREA
+1C7F     @INTERRUPT_AREA
+1CFF     @INTERRUPT_AREA
+1D7F     @INTERRUPT_AREA
+1DFF     @INTERRUPT_AREA
+1E7F     @INTERRUPT_AREA
+1EFF     @INTERRUPT_AREA
+1F7F     @INTERRUPT_AREA
+1FFF     @INTERRUPT_AREA
+
+ROM Allocation:
+000033  modbus_auchCRCHi.call
+000034  modbus_auchCRCHi.data
+000134  modbus_auchCRCLo.call
+000135  modbus_auchCRCLo.data
+000235  @TIMERISR_1
+000239  @GETCH_BIU_1
+000256  @SET_TICKS_1
+000280  modbus_enable_timeout
+00028C  modbus_calc_crc
+0002A2  incomming_modbus_serial
+0002EC  ssp_interrupt
+000332  @I2C_WRITE_1
+000346  RCV_ON
+000356  modbus_init
+000360  @delay_us1
+000374  modbus_serial_putc
+000377  @PUTCHAR_BIU_1
+0003A2  modbus_read_holding_registers
+0003A7  modbus_serial_send_start
+0003DA  modbus_serial_send_stop
+000403  modbus_kbhit
+000403  modbus_check_timeout
+000406  @GET_TICKS_1
+000450  modbus_timeout_now
+0004CB  @MEMSET
+0004D4  @delay_ms1
+0004EE  @cinit1
+0004EE  MAIN
+00052D  @cinit2
+
+Project Directory:
+    I:\WorkShop\BlueTooth\modbus_i2c_test\
+
+Project Files:
+    main.c                                                  [31-七月-17 11:15  CRC=824788ED]
+    main.h                                                  [13-六月-17 15:28  CRC=D872A938]
+    C:\Program Files\PICC\devices\16F1825.h                 [28-三月-17 14:01  CRC=B9F36BD0]
+    C:\Program Files\PICC\drivers\modbus.c                  [09-一月-13 15:55  CRC=3E341B64]
+    C:\Program Files\PICC\drivers\modbus.h                  [09-一月-13 15:55  CRC=26E71866]
+    C:\Program Files\PICC\drivers\modbus_phy_layer.h        [16-七月-13 18:31  CRC=A29872F9]
+    C:\Program Files\PICC\drivers\modbus_app_layer.h        [16-五月-13 13:41  CRC=CCCEAEAD]
+    C:\Program Files\PICC\drivers\modbus_phy_layer_rtu.c    [09-一月-13 15:55  CRC=946092F2]
+    C:\Program Files\PICC\drivers\modbus_app_layer.c        [16-五月-13 12:53  CRC=C73EB0AA]
+
+Source signature=0C0DE7AB
+Program memory checksum=0000
+Program memory CRC=0000
+Hex file CRC=E5DF
+
+Units:
+    main (main)
+
+Compiler Settings:
+    Processor:      PIC16F1825
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Enhanced 16:    Yes
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   main.xsym
+    Errors:      main.err
+    Ext Symbols: main.esym
+    INHX8:       main.hex
+    Symbols:     main.sym
+    List:        main.lst
+    Debug/COFF:  main.cof
+    Project:     main.ccspjt
+    Call Tree:   main.tre
+    Statistics:  main.STA

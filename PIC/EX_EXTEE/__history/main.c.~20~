@@ -1,0 +1,68 @@
+#include <main.h>
+
+//#include <2401.C>
+
+BOOLEAN ext_eeprom_ready() {
+   int1 ack;
+   i2c_start();            // If the write command is acknowledged,
+   ack = i2c_write(0xa0);  // then the device is ready.
+   i2c_stop();
+   return !ack;
+}
+
+void write_ext_eeprom(BYTE address, BYTE data) {
+   while(!ext_eeprom_ready());
+   i2c_start();
+   i2c_write(0xa0);
+   i2c_write(address);
+   i2c_write(data);
+   i2c_stop();
+}
+
+
+BYTE read_ext_eeprom(BYTE address) {
+   BYTE data;
+
+//   while(!ext_eeprom_ready());
+//   printf("line2\r\n");
+   i2c_start();
+   i2c_write(0xa0);
+   i2c_write(address);
+   i2c_start();
+   i2c_write(0xa1);
+   data=i2c_read(0);
+   i2c_stop();
+   return(data);
+}
+
+
+
+
+
+void main()
+{
+   BYTE tmp;
+   BYTE i=0;
+//   EEPROM_ADDRESS address;
+   
+//   init_ext_eeprom();
+
+   while(TRUE)
+   {
+      
+      //Example blinking LED program
+      output_low(LED);
+      delay_ms(DELAY);
+      output_high(LED);
+      delay_ms(DELAY);
+      printf("line1\r\n");
+      //TODO: User Code
+//      for(i=0;i<15;i++)
+//      {
+           tmp = read_ext_eeprom(1);     
+           printf("%x\r\n",tmp);     
+
+           printf("EX_EXTEE\r\n");
+//      }           
+   }
+}

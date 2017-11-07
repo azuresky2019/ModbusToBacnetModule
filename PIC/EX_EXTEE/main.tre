@@ -1,0 +1,16 @@
+ÀÄmain
+   ÀÄMAIN  0/106  Ram=5
+      ÃÄ@cinit1  (Inline)  Ram=0
+      ÃÄinit_ext_eeprom  0/6  Ram=0
+      ÃÄread_ext_eeprom  0/255  Ram=4
+      ³  ÃÄext_eeprom_ready  (Inline)  Ram=1
+      ³  ³  ÀÄ@I2C_WRITE_2  0/74  Ram=1
+      ³  ÃÄ@I2C_WRITE_2  0/74  Ram=1
+      ³  ÃÄ@I2C_WRITE_2  0/74  Ram=1
+      ³  ÃÄ@I2C_WRITE_2  0/74  Ram=1
+      ³  ÀÄ@I2C_READ_2  (Inline)  Ram=4
+      ÃÄ@PSTRINGCN7_115200_116_117  0/87  Ram=6
+      ÃÄ@PRINTF_X_115200_116_117  0/40  Ram=2
+      ÃÄ@MEMSET  0/9  Ram=0
+      ÃÄ@delay_ms1  0/21  Ram=1
+      ÀÄ@delay_ms1  0/21  Ram=1

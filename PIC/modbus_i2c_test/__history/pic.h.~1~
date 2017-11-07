@@ -1,0 +1,375 @@
+#include <16F1825.h>
+//#device adc=10        //Tell device to use 10-bit ADC
+#fuses INTRC_IO,NOWDT,NOPROTECT,NOMCLR                   
+// note BROWNOUT AND PUT GOES TOGETHER.  Need to activate both to enable brownout
+#use delay(clock = 16000000)  //Adjusts the accuracy of the delay functions
+#use standard_io(A)
+
+//CAPACITIVE MODULE RELATIVE REGISTERS DEFINE
+//#BYTE PIR1=0X0C
+//#BIT  RCIF=PIR1.5 
+////////////////////////////////////
+#BYTE INTCON= 0XF8B
+
+#BYTE ANSELA   = 0x18C//127
+   #BIT  ANSA1  = ANSELA.1
+   #BIT  ANSA2  = ANSELA.2
+   
+#BYTE ANSELC   = 0x18E//129
+   #BIT  ANSC0  = ANSELC.0
+
+#BYTE CPSCON0  =0x1E// 331
+   #BIT  T0XCS    = CPSCON0.0
+   #BIT  CPSOUT   = CPSCON0.1
+   #BIT  CPSRNG0  = CPSCON0.2
+   #BIT  CPSRNG1  = CPSCON0.3
+   #BIT  CPSRM    = CPSCON0.6
+   #BIT  CPSON    = CPSCON0.7
+
+#BYTE CPSCON1  = 0x1F//332
+   #BIT  CPSCH0   = CPSCON0.0
+   #BIT  CPSCH1   = CPSCON0.1
+   #BIT  CPSCH2   = CPSCON0.2
+   #BIT  CPSCH3   = CPSCON0.3
+
+
+
+#BYTE INTCON = 0x0B//93
+   #BIT TMR0IF = INTCON.2
+   #BIT TMR0IE = INTCON.5
+   #BIT PEIE = INTCON.6
+   #BIT GIE = INTCON.7
+
+#BYTE OPTION_REG = 0x95//187
+   #BIT PS0 = OPTION_REG.0
+   #BIT PS1 = OPTION_REG.1
+   #BIT PS2 = OPTION_REG.2
+   #BIT PSA = OPTION_REG.3
+   #BIT TMR0SE = OPTION_REG.4
+   #BIT TMR0CS = OPTION_REG.5
+
+#BYTE T1CON = 0x18//197
+   #BIT TMR1ON = T1CON.0
+
+   #BIT T1SYNC = T1CON.2
+   #BIT T1OSCEN = T1CON.3
+   #BIT T1CKPS0 = T1CON.4
+   #BIT T1CKPS1 = T1CON.5
+   #BIT TMR1CS0 = T1CON.6
+   #BIT TMR1CS1 = T1CON.7
+   
+#WORD TMR1 = 0x16
+#BYTE TMR1L = 0x16
+#BYTE TMR1H = 0x17   
+
+#BYTE TRISA    = 0x8C//126
+   #BIT  TRISA1   = TRISA.1
+   #BIT  TRISA2   = TRISA.2
+   
+#BYTE TRISC    = 0x8E//126
+   #BIT  TRISC0   = TRISC.0
+
+#BYTE T1GCON   = 0x19//198
+   #BIT TMR1GE = T1GCON.7
+
+#BYTE FVRCON = 0x117
+   #BIT CDAFVR0 = FVRCON.2
+   #BIT CDAFVR1 = FVRCON.3
+   #BIT FVREN = FVRCON.7
+   #BIT FVRRDY = FVRCON.6
+   
+#BYTE DACCON0 = 0x118
+   #BIT DACNSS = DACCON0.0
+   #BIT DACPSS0 = DACCON0.2
+   #BIT DACPSS1 = DACCON0.3
+   #BIT DACOE = DACCON0.5
+   #BIT DACLPS = DACCON0.6
+   #BIT DACEN = DACCON0.7
+   
+#BYTE DACCON1 = 0x119
+   #BIT DACR0 = DACCON1.0
+   #BIT DACR1 = DACCON1.1
+   #BIT DACR2 = DACCON1.2   
+   #BIT DACR3 = DACCON1.3
+   #BIT DACR4 = DACCON1.4
+
+////////////////////////////////////////
+
+#define LO 0 // Low
+#define HI 1 // High
+#define XX 2 // Don't Care
+
+#define SCL PIN_A4
+#define SDA PIN_A5                                                      
+
+#define CL_AS_EXPECTED(s) ((s == XX) || (INPUT(SCL) == s))
+#define DA_AS_EXPECTED(s) ((s == XX) || (INPUT(SDA) == s))
+
+
+#define LITTLE_PULSE_JUMP      50
+#define MIDDLE_PULSE_JUMP      100                            
+#define LARGE_PULSE_JUMP      200                              
+                                  
+
+//#define CTEST            PIN_A3
+//#define HEATING            PIN_A5   
+//#define HUMIDITY        PIN_A2
+//#define RESET            PIN_C5
+//#define TEMPERATURE        PIN_C2
+//#define TEMPERATURE        PIN_A0
+//#define TEM_POWER        PIN_C1
+//#define TEM_GND            PIN_C0 
+                                 
+
+#define SOFT_BAUDRATE      0xd0
+
+#define   SERIAL_TIMEOUT_SECONDS      3000
+
+#define PIC_VERSION        27   
+typedef signed int8     sint8;
+typedef signed int16    sint16;
+typedef signed int32    sint32;
+
+#define   TIMER0_OVERFLOW_TIME   156//1//152//204
+#define   CAP_THRESHOLD         3
+#define   TIMER0_CLOCK         7
+#define   HUM_SAMPLING_TIMES      20
+#define   TEM_SAMPLING_TIMES      20
+#define   IGNORE_TIMES         20
+
+
+
+#define   ENABLE                       1
+#define   DISABLE                      0
+
+#define   MAX_CAL_POINT                10
+#define   FAC_TABLE                    0
+#define   USER_TABLE                   1
+
+#define   IIC_ADDR                     0x5a
+
+#define   CMD_READ_PARAMS              0xc1
+#define   CMD_READ_VERSION             0xc2
+#define   CMD_CONFIG_READ              0xc3
+
+#define   CMD_OVERRIDE_CAL             0xd3
+#define   CMD_READ_CAL_PT              0xd4
+#define   CMD_HEATING_CONTROL          0xd5
+
+#define   CMD_CLEAR_TABLE              0xe4
+#define   CMD_TEMP_CAL                 0xe5
+#define   CMD_HUM_CAL                  0xe6
+#define   CMD_SN_WRITE                 0xee
+#define   CMD_SN_READ                  0xef
+
+#define   CMD_TAB_SEL                  0xa0
+#define   CMD_USER_TAB_PT_SET          0xa1 
+
+//#define B1 0.0014 
+//#define B3 0.0317         
+#define B1  14 
+#define B3  317 
+
+#define OVER_HUM     0
+#define READY_HUM    1
+#define RECORD_HUM   2
+enum
+{
+    EEP_SN_HIGH_BYTE,
+    EEP_SN_LOW_BYTE,
+    
+    EEP_TEMP_CALIBRATION_H,
+    EEP_TEMP_CALIBRATION_L,
+
+    EEP_HUM_CALIBRATION_H,
+    EEP_HUM_CALIBRATION_L,
+
+    EEP_HUM_TABLE_COUNTERS,
+
+    EEP_HUM_TABLE_POINT1_HUM_H,
+    EEP_HUM_TABLE_POINT1_HUM_L,
+    EEP_HUM_TABLE_POINT1_FREQ_H,
+    EEP_HUM_TABLE_POINT1_FREQ_L,
+    EEP_HUM_TABLE_POINT2_HUM_H,
+    EEP_HUM_TABLE_POINT2_HUM_L,
+    EEP_HUM_TABLE_POINT2_FREQ_H,
+    EEP_HUM_TABLE_POINT2_FREQ_L,
+    EEP_HUM_TABLE_POINT3_HUM_H,
+    EEP_HUM_TABLE_POINT3_HUM_L,
+    EEP_HUM_TABLE_POINT3_FREQ_H,
+    EEP_HUM_TABLE_POINT3_FREQ_L,
+    EEP_HUM_TABLE_POINT4_HUM_H,
+    EEP_HUM_TABLE_POINT4_HUM_L,
+    EEP_HUM_TABLE_POINT4_FREQ_H,
+    EEP_HUM_TABLE_POINT4_FREQ_L,
+    EEP_HUM_TABLE_POINT5_HUM_H,
+    EEP_HUM_TABLE_POINT5_HUM_L,
+    EEP_HUM_TABLE_POINT5_FREQ_H,
+    EEP_HUM_TABLE_POINT5_FREQ_L,
+    EEP_HUM_TABLE_POINT6_HUM_H,
+    EEP_HUM_TABLE_POINT6_HUM_L,
+    EEP_HUM_TABLE_POINT6_FREQ_H,
+    EEP_HUM_TABLE_POINT6_FREQ_L,
+    EEP_HUM_TABLE_POINT7_HUM_H,
+    EEP_HUM_TABLE_POINT7_HUM_L,
+    EEP_HUM_TABLE_POINT7_FREQ_H,
+    EEP_HUM_TABLE_POINT7_FREQ_L,
+    EEP_HUM_TABLE_POINT8_HUM_H,
+    EEP_HUM_TABLE_POINT8_HUM_L,
+    EEP_HUM_TABLE_POINT8_FREQ_H,
+    EEP_HUM_TABLE_POINT8_FREQ_L,
+    EEP_HUM_TABLE_POINT9_HUM_H,
+    EEP_HUM_TABLE_POINT9_HUM_L,
+    EEP_HUM_TABLE_POINT9_FREQ_H,
+    EEP_HUM_TABLE_POINT9_FREQ_L,
+    EEP_HUM_TABLE_POINT10_HUM_H,
+    EEP_HUM_TABLE_POINT10_HUM_L,
+    EEP_HUM_TABLE_POINT10_FREQ_H,
+    EEP_HUM_TABLE_POINT10_FREQ_L,
+    
+    EEP_CAL_TABLE_SEL,
+    
+    EEP_USER_CALIBRATION_H,
+    EEP_USER_CALIBRATION_L,
+
+    EEP_USER_TABLE_COUNTERS,
+
+    EEP_USER_TABLE_POINT1_HUM_H,
+    EEP_USER_TABLE_POINT1_HUM_L,
+    EEP_USER_TABLE_POINT1_FREQ_H,
+    EEP_USER_TABLE_POINT1_FREQ_L,
+    EEP_USER_TABLE_POINT2_HUM_H,
+    EEP_USER_TABLE_POINT2_HUM_L,
+    EEP_USER_TABLE_POINT2_FREQ_H,
+    EEP_USER_TABLE_POINT2_FREQ_L,
+    EEP_USER_TABLE_POINT3_HUM_H,
+    EEP_USER_TABLE_POINT3_HUM_L,
+    EEP_USER_TABLE_POINT3_FREQ_H,
+    EEP_USER_TABLE_POINT3_FREQ_L,
+    EEP_USER_TABLE_POINT4_HUM_H,
+    EEP_USER_TABLE_POINT4_HUM_L,
+    EEP_USER_TABLE_POINT4_FREQ_H,
+    EEP_USER_TABLE_POINT4_FREQ_L,
+    EEP_USER_TABLE_POINT5_HUM_H,
+    EEP_USER_TABLE_POINT5_HUM_L,
+    EEP_USER_TABLE_POINT5_FREQ_H,
+    EEP_USER_TABLE_POINT5_FREQ_L,
+    EEP_USER_TABLE_POINT6_HUM_H,
+    EEP_USER_TABLE_POINT6_HUM_L,
+    EEP_USER_TABLE_POINT6_FREQ_H,
+    EEP_USER_TABLE_POINT6_FREQ_L,
+    EEP_USER_TABLE_POINT7_HUM_H,
+    EEP_USER_TABLE_POINT7_HUM_L,
+    EEP_USER_TABLE_POINT7_FREQ_H,
+    EEP_USER_TABLE_POINT7_FREQ_L,
+    EEP_USER_TABLE_POINT8_HUM_H,
+    EEP_USER_TABLE_POINT8_HUM_L,
+    EEP_USER_TABLE_POINT8_FREQ_H,
+    EEP_USER_TABLE_POINT8_FREQ_L,
+    EEP_USER_TABLE_POINT9_HUM_H,
+    EEP_USER_TABLE_POINT9_HUM_L,
+    EEP_USER_TABLE_POINT9_FREQ_H,
+    EEP_USER_TABLE_POINT9_FREQ_L,
+    EEP_USER_TABLE_POINT10_HUM_H,
+    EEP_USER_TABLE_POINT10_HUM_L,
+    EEP_USER_TABLE_POINT10_FREQ_H,
+    EEP_USER_TABLE_POINT10_FREQ_L,
+    
+    EEP_END,  
+};  
+
+                              
+typedef struct      
+{
+    int16 hum;               
+    int16 freq;                           
+} STR_HUM_TABLE;
+
+ 
+STR_HUM_TABLE hum_table[2][MAX_CAL_POINT]; 
+
+int8 heating_flag = FALSE;                                       
+int16 min, max;   
+
+int8 humidity_table_counter[2];     //for user table and factory table
+
+int16 humidity_frequency;
+int8 i2c_rev[4]; 
+int1 insert_cal_pt;
+
+int8 offseth;
+int8 offsetl;
+//int1 heating_hot = 0;
+
+sint16 humidity_calibration[2];    //for user table and factory table
+
+sint16 temperature_calibration; 
+sint16 temperature_buf;
+sint16 temperature_value = 0;
+sint16 humidity_buf;
+int16 read_hum_buffer[HUM_SAMPLING_TIMES];
+int16 record_hum_buffer = 0;
+int16 humidity_value;
+int8 read_hum_states=0;
+int32 datacore = 0;
+ 
+int8 sampling_counter;
+
+
+
+int1 serial_receive_watchdog = 0;
+int1 first_time_run = 1;
+int8 read_hum_counts = 0;
+int16 serial_receive_timeout = SERIAL_TIMEOUT_SECONDS;
+
+int16 serialnumber = 0;
+
+float linear_K = 0;
+float linear_B = 0;
+int1 updata_flag = 1;
+int8 cal_table_sel;
+signed int16 temperature_d;
+signed int16 dew_pt = 0; 
+
+
+//MHF:12-30-05,Added 4 values to make the tstat can measure minus degree
+// 10k termistor GREYSTONE -40 to 120 Deg.C or -40 to 248 Deg.F
+//int16 const def_tab_pic_x[20] =
+//{25,   39,  61, 83, 102, 113, 112, 101, 85, 67, 51, 38, 28, 21, 15, 11, 8, 6 , 5, 19}; // note the lastest value is orignal of ADC value 
+
+#define TABLE_INDEX        17 
+//MHF:14-11-17,NCP_XH103
+// 10k termistor GREYSTONE -40 to 120 Deg.C 
+int16 const def_tab_pic_x[TABLE_INDEX] =
+{33,48,64,80,92,97,95,88,76,64,51,40,31,24,19,15,58}; // note the lastest value is orignal of ADC value 
+
+
+unsigned int waitCLcount;
+unsigned int waitDAcount;
+
+
+void poll_i2c_bus();
+void i2c_give_ack();                      
+int1 i2c_get_ack();             
+void i2c_write_data();
+void i2c_write_version();
+int8 i2c_read();
+void i2c_write(int16 ch);
+void initial();
+
+int16 hum_filter_reading();
+int16 tem_filter_reading();
+
+void check_restart(void);
+
+
+sint16 look_up_table(unsigned int16 count);
+//int16 get_humidity(unsigned int16 count); 
+void heating_control(void);                
+void init_params(void);
+int16 get_humidity_from_freqency(int16 frequency);
+void refresh_eeprom(void);  
+signed int16 filter_humidity(float hum, int8 filter); 
+void min2method(float *K, float *B, int8 counter, STR_HUM_TABLE *buf ); 
+void insert_calibration_point(int16 hum, int16 freq);
+signed int16 get_dew_pt(signed int16 para_t,signed int16 para_h);

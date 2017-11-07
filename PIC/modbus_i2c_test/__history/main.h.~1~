@@ -1,0 +1,8 @@
+#include <16F1825.h>
+#device ADC=10
+#use delay(internal=32MHz,restart_wdt)
+
+#define LED PIN_C1
+#define DELAY 200
+
+

@@ -1,0 +1,32 @@
+#include <main.h>
+#include "pic.h"
+
+#define MODBUS_BUS SERIAL
+#define MODBUS_TYPE MODBUS_TYPE_MASTER
+#define MODBUS_SERIAL_TYPE MODBUS_RTU
+#define MODBUS_SERIAL_INT_SOURCE MODBUS_INT_RDA
+//#define MODBUS_SERIAL_RX_ENABLE PIN_C1
+#define MODBUS_SERIAL_ENABLE_PIN PIN_C3 
+#define MODBUS_SERIAL_BAUD 19200
+#define MODBUS_REMOTE_ADDRESS 247
+#include "modbus.c"
+
+void main()
+{
+   modbus_init();
+
+   while(TRUE)
+   {
+
+      //Example blinking LED program
+      output_low(LED);
+      delay_ms(DELAY);
+      output_high(LED);
+      delay_ms(DELAY);
+
+      //TODO: User Code
+      modbus_read_holding_registers(0xff,0x00,0x06);
+   }
+
+
+}

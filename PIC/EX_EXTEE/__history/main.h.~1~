@@ -1,0 +1,10 @@
+#include <16F1825.h>
+#device ADC=10
+#use delay(internal=32MHz)
+#use rs232(baud=9600,parity=N,xmit=PIN_C4,rcv=PIN_C5,bits=8,stream=PORT1)
+#use i2c(Master,Fast,sda=PIN_C1,scl=PIN_C0)
+
+#define LED PIN_C2
+#define DELAY 500
+
+

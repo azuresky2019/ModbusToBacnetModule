@@ -1,0 +1,80 @@
+
+ROM used:   1382/8192 (17%)
+            1382/8192 (17%) including unused fragments
+
+            0.4 Average locations per line
+            3.2 Average locations per statement
+
+RAM used:   533/1024 (52%) at main() level
+            553/1024 (54%) worst case
+
+Stack used: 3 worst case (0 in main + 3 for interrupts)
+Stack size: 16
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   85    24   5  main.c
+    9     0   0  main.h
+  967     0   0  C:\Program Files\PICC\devices\16F1825.h
+   88     0   0  C:\Program Files\PICC\drivers\modbus.c
+  199     0   0  C:\Program Files\PICC\drivers\modbus.h
+  200     0   0  C:\Program Files\PICC\drivers\modbus_phy_layer.h
+  597     0   0  C:\Program Files\PICC\drivers\modbus_app_layer.h
+  390    70  16  C:\Program Files\PICC\drivers\modbus_phy_layer_rtu.c
+ 1046   343  78  C:\Program Files\PICC\drivers\modbus_app_layer.c
+----- -----
+ 3581   437 Total
+
+Page ROM  %  RAM    Vol Diff  Functions:
+---- --- --- ---    --- ----  ----------
+0     26   2    1             @delay_ms1
+0     20   1    1             @delay_us1
+ Inline         1             @I2C_WRITE_1
+0      4   0    0             @TIMERISR_1
+ Inline         0             @GET_TICKS_1
+0     42   3    2             @SET_TICKS_1
+ Inline         2             @PUTCHAR_BIU_1
+0     29   2    2             @GETCH_BIU_1
+0    257  19    0             @const812
+0    257  19    0             @const815
+0     16   1    0    172  2.7  RCV_ON
+0     12   1    1     43  1.5  modbus_enable_timeout
+ Inline         0    259  5.0  modbus_timeout_now
+ Inline         3     80  2.7  modbus_check_timeout
+0     22   2    2    230  3.2  modbus_calc_crc
+0     46   3    1     88  2.1  modbus_serial_putc
+ Inline         2    235  4.0  modbus_serial_send_start
+ Inline         2    387  5.6  modbus_serial_send_stop
+0     74   5    4    754  6.0  incomming_modbus_serial
+0     10   1    0     47  1.3  modbus_init
+ Inline         0    269  5.3  modbus_kbhit
+0    297  21    6    552  6.0  modbus_read_holding_registers
+0     90   7    4    417  6.6  ssp_interrupt
+0    121   9    1    290  4.1  MAIN
+0      9   1    0             @MEMSET
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               14
+    Statements              437
+    Comments                958
+    Volume (V)              6413
+    Difficulty (D)          55.0
+    Effort to implement (E) 352416
+    Time to implement (T)   5 hours, 26 minutes
+    Est Delivered Bugs (B)  2
+    Cyclomatic Complexity   17
+    Maintainability (MI)    95
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     3  0  
+00003-00003     0  1  
+00004-00032    47  0  
+00033-007FF  1332  665  
+00800-00FFF     0  2048  
+01000-017FF     0  2048  
+01800-01FFF     0  2048  
+
+
+

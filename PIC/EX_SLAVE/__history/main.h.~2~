@@ -1,0 +1,9 @@
+#include <16F1825.h>
+#device ADC=10
+#use delay(internal=32MHz)
+#use i2c(Slave,Fast,sda=PIN_C1,scl=PIN_C0,restart_wdt,address=0x31)
+
+#define LED PIN_A5
+#define DELAY 300
+
+

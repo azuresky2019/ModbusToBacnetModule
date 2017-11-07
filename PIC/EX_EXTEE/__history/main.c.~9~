@@ -1,0 +1,28 @@
+#include <main.h>
+
+#include <2401.C>
+
+void main()
+{
+   BYTE tmp,i;
+//   EEPROM_ADDRESS address;
+   
+   init_ext_eeprom();
+
+   while(TRUE)
+   {
+      
+      //Example blinking LED program
+      output_low(LED);
+      delay_ms(DELAY);
+      output_high(LED);
+      delay_ms(DELAY);
+
+      //TODO: User Code
+//      for(i=0;i<15;i++)
+//      {
+         tmp = read_ext_eeprom(i);     
+         printf("%s:%d\r\n",i,tmp);      
+//      }           
+   }
+}

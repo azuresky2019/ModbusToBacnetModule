@@ -1,0 +1,21 @@
+#include <main.h>
+
+#include <2404.C>
+
+void main()
+{
+	init_ext_eeprom();
+
+	while(TRUE)
+	{
+
+		//Example blinking LED program
+		output_low(LED);
+		delay_ms(DELAY);
+		output_high(LED);
+		delay_ms(DELAY);
+
+		//TODO: User Code
+	}
+
+}

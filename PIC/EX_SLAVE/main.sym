@@ -1,0 +1,152 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @READ_PACKED_MEMORY.P2
+004-005 @WRITE_PROGRAM_MEMORY8.P3
+004-005 @WRITE_PACKED_MEMORY.P4
+006-007 @READ_PACKED_MEMORY.P1
+006-007 @WRITE_PACKED_MEMORY.P2
+020     @INTERRUPT_AREA
+021     @INTERRUPT_AREA
+022     @INTERRUPT_AREA
+023     @INTERRUPT_AREA
+024     address
+025-06F,0A0-0EF,120-16F,1A0-1B4 buffer
+070     @I2C_STATE
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+07F     @INTERRUPT_AREA
+0FF     @INTERRUPT_AREA
+111.6   C1OUT
+113.6   C2OUT
+17F     @INTERRUPT_AREA
+191-192 @WRITE_PROGRAM_MEMORY8.P1
+191-192 @READ_PROGRAM_MEMORY8.P2
+1B5     @delay_ms1.P1
+1B6     ssp_interrupt.incoming
+1B7     ssp_interrupt.state
+1B8     ssp_interrupt.@SCRATCH1
+1B9     @I2C_WRITE_1.P1
+1B9     ssp_interrupt.@SCRATCH2
+1FF     @INTERRUPT_AREA
+27F     @INTERRUPT_AREA
+291     CCP_1
+291     CCP_1_LOW
+292     CCP_1_HIGH
+298     CCP_2
+298     CCP_2_LOW
+299     CCP_2_HIGH
+2FF     @INTERRUPT_AREA
+311     CCP_3
+311     CCP_3_LOW
+312     CCP_3_HIGH
+318     CCP_4_LOW
+318     CCP_4
+319     CCP_4_HIGH
+37F     @INTERRUPT_AREA
+39C.0   MDBIT
+39C.3   MDOUT
+3FF     @INTERRUPT_AREA
+47F     @INTERRUPT_AREA
+4FF     @INTERRUPT_AREA
+57F     @INTERRUPT_AREA
+5FF     @INTERRUPT_AREA
+67F     @INTERRUPT_AREA
+6FF     @INTERRUPT_AREA
+77F     @INTERRUPT_AREA
+7FF     @INTERRUPT_AREA
+87F     @INTERRUPT_AREA
+8FF     @INTERRUPT_AREA
+97F     @INTERRUPT_AREA
+9FF     @INTERRUPT_AREA
+A7F     @INTERRUPT_AREA
+AFF     @INTERRUPT_AREA
+B7F     @INTERRUPT_AREA
+BFF     @INTERRUPT_AREA
+C7F     @INTERRUPT_AREA
+CFF     @INTERRUPT_AREA
+D7F     @INTERRUPT_AREA
+DFF     @INTERRUPT_AREA
+E7F     @INTERRUPT_AREA
+EFF     @INTERRUPT_AREA
+F7F     @INTERRUPT_AREA
+FFF     @INTERRUPT_AREA
+107F     @INTERRUPT_AREA
+10FF     @INTERRUPT_AREA
+117F     @INTERRUPT_AREA
+11FF     @INTERRUPT_AREA
+127F     @INTERRUPT_AREA
+12FF     @INTERRUPT_AREA
+137F     @INTERRUPT_AREA
+13FF     @INTERRUPT_AREA
+147F     @INTERRUPT_AREA
+14FF     @INTERRUPT_AREA
+157F     @INTERRUPT_AREA
+15FF     @INTERRUPT_AREA
+167F     @INTERRUPT_AREA
+16FF     @INTERRUPT_AREA
+177F     @INTERRUPT_AREA
+17FF     @INTERRUPT_AREA
+187F     @INTERRUPT_AREA
+18FF     @INTERRUPT_AREA
+197F     @INTERRUPT_AREA
+19FF     @INTERRUPT_AREA
+1A7F     @INTERRUPT_AREA
+1AFF     @INTERRUPT_AREA
+1B7F     @INTERRUPT_AREA
+1BFF     @INTERRUPT_AREA
+1C7F     @INTERRUPT_AREA
+1CFF     @INTERRUPT_AREA
+1D7F     @INTERRUPT_AREA
+1DFF     @INTERRUPT_AREA
+1E7F     @INTERRUPT_AREA
+1EFF     @INTERRUPT_AREA
+1F7F     @INTERRUPT_AREA
+1FFF     @INTERRUPT_AREA
+
+ROM Allocation:
+000021  ssp_interrupt
+00006F  @I2C_WRITE_1
+000083  @delay_ms1
+000098  MAIN
+000098  @cinit1
+0000BE  @cinit2
+
+Project Directory:
+    I:\WorkShop\BlueTooth\EX_SLAVE\
+
+Project Files:
+    main.c                                                  [13-六月-17 11:18  CRC=C9C61606]
+    main.h                                                  [12-六月-17 17:24  CRC=D872A938]
+    C:\Program Files\PICC\devices\16F1825.h                 [28-三月-17 14:01  CRC=B9F36BD0]
+
+Source signature=161F96DE
+Program memory checksum=0000
+Program memory CRC=0000
+Hex file CRC=250F
+
+Units:
+    main (main)
+
+Compiler Settings:
+    Processor:      PIC16F1825
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Enhanced 16:    Yes
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   main.xsym
+    Errors:      main.err
+    Ext Symbols: main.esym
+    INHX8:       main.hex
+    Symbols:     main.sym
+    List:        main.lst
+    Debug/COFF:  main.cof
+    Project:     main.ccspjt
+    Call Tree:   main.tre
+    Statistics:  main.STA

@@ -1,0 +1,108 @@
+[PROJECT]
+Target=main.hex
+Processor_Text=PIC16F1825
+CCSVerions=5.071
+Compiler=PCM
+CCSVersion=5.071
+[Target Data]
+FileList=main.c
+[Directories]
+Include=
+[I:\WorkShop\BlueTooth\EX_EXTEE\main]
+Type=4
+[mru-list]
+1=main.c
+[CompilerVersion]
+Fixed=5.071			
+
+[ProjectLog]
+Days=1
+D1=12-06-2017
+D1_L=44
+D1_L1=[49607]Project Opened.
+D1_L2=[49621]Started Editing.
+D1_L3=[49798]Stopped Editing.
+TotalEdit=74
+TotalDebug=4
+D1_E=74
+D1_D=4
+D1_L4=[49804]Project Closed.
+D1_L5=[49804]Project Opened.
+D1_L6=[49816]Started Editing.
+D1_L7=[50249]Stopped Editing.
+D1_L8=[50424]Project Closed.
+D1_L9=[50425]Project Opened.
+D1_L10=[50510]Started Editing.
+D1_L11=[51124]Stopped Editing.
+D1_L12=[51968]Started Editing.
+D1_L13=[52269]Stopped Editing.
+D1_L14=[52779]Started Editing.
+D1_L15=[53179]Stopped Editing.
+D1_L16=[53179]Project Closed.
+D1_L17=[53381]Project Opened.
+D1_L18=[53403]Started Editing.
+D1_L19=[54156]Stopped Editing.
+D1_L20=[55480]Started Editing.
+D1_L21=[55677]Stopped Editing.
+D1_L22=[55677]Started Debugging.
+D1_L23=[56417]Stopped Debugging.
+D1_L24=[56485]Started Debugging.
+D1_L25=[56577]Stopped Debugging.
+D1_L26=[56577]Started Editing.
+D1_L27=[57439]Stopped Editing.
+D1_L28=[57709]Started Editing.
+D1_L29=[58219]Stopped Editing.
+D1_L30=[58225]Started Editing.
+D1_L31=[58909]Stopped Editing.
+D1_L32=[59086]Project Closed.
+D1_L33=[61166]Project Opened.
+D1_L34=[61422]Project Closed.
+D1_L35=[61422]Project Opened.
+D1_L36=[61489]Started Editing.
+D1_L37=[61523]Stopped Editing.
+D1_L38=[61523]Project Closed.
+D1_L39=[61527]Project Opened.
+D1_L40=[61691]Started Editing.
+D1_L41=[62480]Stopped Editing.
+D1_L42=[62480]Project Closed.
+D1_L43=[63568]Project Opened.
+D1_L44=[66543]Project Closed.
+
+[Opened Files]
+1=main.c
+t1=1
+Count=2
+2=2404.C
+t2=1
+3=2404.C
+t3=1
+4=C:\Program Files\PICC\drivers\2416.C
+t4=1
+[main.c]
+Type=4
+
+[defines]
+buildcount=34
+
+[debugperif]
+selected=Analog to Digital Converter
+
+[debugbreak]
+count=1
+f1=C:\Program Files\PICC\drivers\2401.C
+l1=77
+a.1=165
+
+[debugwatch]
+count=0
+
+[debugexpr]
+expr=
+sideeffects=1
+
+[ExtraIncludes]
+Count=0
+1=main=i:\workshop\bluetooth\ex_extee\2416.c
+[Units]
+Count=1
+1=main (main)

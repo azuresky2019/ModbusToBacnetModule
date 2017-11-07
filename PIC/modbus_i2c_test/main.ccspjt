@@ -1,0 +1,186 @@
+[PROJECT]
+Target=main.hex
+Processor_Text=PIC16F1825
+CCSVerions=5.071
+Compiler=PCM
+CCSVersion=5.071
+[Target Data]
+FileList=main.c
+[Directories]
+Include=
+[I:\WorkShop\BlueTooth\modbus_test\main]
+Type=4
+[mru-list]
+1=main.c
+[CompilerVersion]
+Fixed=5.071	
+
+[ProjectLog]
+Days=12
+D1=19-05-2017
+D1_L=26
+D1_L1=[52691]Project Opened.
+D1_L2=[54081]Project Closed.
+D1_L3=[54107]Project Opened.
+D1_L4=[54136]Started Editing.
+D1_L5=[54630]Stopped Editing.
+D1_L6=[54683]Started Editing.
+D1_L7=[55045]Stopped Editing.
+D1_L8=[55589]Project Opened.
+D1_L9=[55837]Project Opened.
+D1_L10=[55882]Started Debugging.
+D1_L11=[56605]Stopped Debugging.
+D1_L12=[56626]Started Editing.
+D1_L13=[56928]Stopped Editing.
+D1_L14=[57151]Started Editing.
+D1_L15=[57467]Stopped Editing.
+TotalEdit=84
+TotalDebug=3
+D1_E=17
+D1_D=3
+D1_L16=[57468]Project Closed.
+D1_L17=[60847]Project Opened.
+D1_L18=[60941]Project Closed.
+D1_L19=[60941]Project Opened.
+D1_L20=[61010]Started Editing.
+D1_L21=[61543]Stopped Editing.
+D1_L22=[62181]Started Editing.
+D1_L23=[62677]Stopped Editing.
+D1_L24=[63020]Started Editing.
+D1_L25=[63212]Stopped Editing.
+D1_L26=[63212]Project Closed.
+D2=22-05-2017
+D2_L=6
+D2_L1=[33006]Project Opened.
+D2_L2=[40742]Project Closed.
+D2_L3=[40907]Project Opened.
+D2_L4=[53496]Project Closed.
+D2_L5=[58076]Project Opened.
+D2_L6=[59025]Project Closed.
+D3=25-05-2017
+D3_L=2
+D3_L1=[49949]Project Opened.
+D3_L2=[62992]Project Closed.
+D4=08-06-2017
+D4_L=11
+D4_L1=[40395]Project Opened.
+D4_L2=[40928]Started Editing.
+D4_L3=[41228]Stopped Editing.
+D4_L4=[41280]Started Editing.
+D4_L5=[43218]Stopped Editing.
+D4_L6=[45986]Started Editing.
+D4_L7=[46444]Stopped Editing.
+D4_E=30
+D4_D=0
+D4_L8=[47788]Project Closed.
+D4_L9=[49900]Project Opened.
+D4_L10=[53393]Project Closed.
+D4_L11=[58797]Project Opened.
+D5=09-06-2017
+D5_L=7
+D5_L1=[34420]Started Editing.
+D5_L2=[34722]Stopped Editing.
+D5_E=1
+D5_D=0
+D5_L3=[37463]Project Closed.
+D5_L4=[48384]Project Opened.
+D5_L5=[48641]Project Closed.
+D5_L6=[62784]Project Opened.
+D5_L7=[63049]Project Closed.
+D6=13-06-2017
+D6_L=19
+D6_L1=[42489]Project Opened.
+D6_L2=[42510]Project Closed.
+D6_L3=[42518]Project Opened.
+D6_L4=[42542]Started Editing.
+D6_L5=[43059]Stopped Editing.
+D6_E=23
+D6_D=0
+D6_L6=[51282]Project Closed.
+D6_L7=[51318]Project Opened.
+D6_L8=[51688]Started Editing.
+D6_L9=[52152]Stopped Editing.
+D6_L10=[53063]Started Editing.
+D6_L11=[54222]Stopped Editing.
+D6_L12=[54321]Started Editing.
+D6_L13=[54687]Stopped Editing.
+D6_L14=[54777]Project Closed.
+D6_L15=[54788]Project Opened.
+D6_L16=[54797]Project Closed.
+D6_L17=[54804]Project Opened.
+D6_L18=[54968]Started Editing.
+D6_L19=[55986]Stopped Editing.
+D7=14-06-2017
+D7_E=12
+D7_D=0
+D7_L=1
+D7_L1=[40952]Project Closed.
+D8=14-07-2017
+D8_L=2
+D8_L1=[59815]Project Opened.
+D8_L2=[65731]Project Closed.
+D9=18-07-2017
+D9_L=1
+D9_L1=[58077]Project Opened.
+D10=21-07-2017
+D10_L=1
+D10_L1=[63194]Project Closed.
+D11=31-07-2017
+D11_L=3
+D11_L1=[37408]Project Opened.
+D11_L2=[40510]Started Editing.
+D11_L3=[40810]Stopped Editing.
+D12=01-08-2017
+D12_E=1
+D12_D=0
+D12_L=1
+D12_L1=[58247]Project Closed.
+
+[Opened Files]
+1=main.c
+t1=25
+Count=7
+2=C:\Program Files\PICC\drivers\modbus.h
+t2=1
+3=modbus.h
+t3=1
+4=C:\Program Files\PICC\drivers\modbus.c
+t4=1
+5=C:\Program Files\PICC\drivers\modbus_phy_layer_rtu.c
+t5=1
+6=C:\Program Files\PICC\devices\16F1825.h
+t6=1
+7=main.h
+t7=1
+8=C:\Program Files\PICC\drivers\modbus_app_layer.c
+t8=107
+9=C:\Program Files\PICC\drivers\modbus.h
+t9=107
+[main.c]
+Type=4
+
+[defines]
+buildcount=41
+
+[debugperif]
+selected=Analog to Digital Converter
+
+[debugbreak]
+count=1
+f1=I:\WorkShop\BlueTooth\modbus_test\main.c
+l1=311
+a.1=1806
+
+[debugwatch]
+count=0
+
+[debugexpr]
+expr=
+sideeffects=1
+
+[ExtraIncludes]
+Count=0
+1=main=i:\workshop\bluetooth\modbus_i2c_test\modbus.h
+[Units]
+Count=1
+1=main (main)
